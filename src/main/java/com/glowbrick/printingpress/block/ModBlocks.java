@@ -11,6 +11,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import com.glowbrick.printingpress.block.custom.PrintingPressBlock;
+
 import java.util.function.Supplier;
 
 public class ModBlocks {

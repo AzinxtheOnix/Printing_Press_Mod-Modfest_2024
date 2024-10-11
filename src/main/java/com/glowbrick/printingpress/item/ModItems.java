@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
-    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PrintingPress.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PrintingPress.MOD_ID);
 
     public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerSimpleItem("test_item"); //ToDo: FIX THIS!
 

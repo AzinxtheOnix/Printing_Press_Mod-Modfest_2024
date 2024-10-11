@@ -1,6 +1,7 @@
 package com.glowbrick.printingpress;
 
 import com.glowbrick.printingpress.block.ModBlocks;
+import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
 import org.slf4j.Logger;
 
@@ -37,6 +38,7 @@ public class PrintingPress
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 

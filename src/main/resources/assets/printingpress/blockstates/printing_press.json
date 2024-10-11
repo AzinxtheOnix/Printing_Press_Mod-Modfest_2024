@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "printingpress:block/printing_press"
+    }
+  }
+}

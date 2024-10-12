@@ -20,7 +20,7 @@ public class TypesetterMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
 
-    protected TypesetterMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+    public TypesetterMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
@@ -30,6 +30,9 @@ public class TypesetterMenu extends AbstractContainerMenu {
         this.blockEntity = ((TypesetterBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
+
+        addPlayerInventory(inv);
+        addPlayerHotbar(inv);
 
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,0,8,62));
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,1,54,34));

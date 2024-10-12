@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                    .displayItems((pParameters, pOutput)->{
                        pOutput.accept(ModItems.MOVABLE_TYPE.get());
                        pOutput.accept(ModBlocks.PRINTINGPRESS);
+                       pOutput.accept(ModBlocks.TYPESETTER);
                    }).build());
 
 

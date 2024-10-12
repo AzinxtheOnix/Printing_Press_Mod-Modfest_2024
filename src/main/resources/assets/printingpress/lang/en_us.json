@@ -1,5 +1,6 @@
 {
   "item.printingpress.movable_type": "Movable Type",
   "block.printingpress.printing_press": "Printing Press",
-  "itemGroup.printingpress.printing_press_tab": "Glowbrick's Printing Press"
+  "itemGroup.printingpress.printing_press_tab": "Glowbrick's Printing Press",
+  "block.printingpress.typesetter": "Typesetter"
 }

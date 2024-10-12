@@ -5,5 +5,6 @@
   "block.printingpress.printing_press": "Printing Press",
   "itemGroup.printingpress.printing_press_tab": "Glowbrick's Printing Press",
   "block.printingpress.typesetter": "Typesetter",
-  "blockentity.printingpress.typesetter":"Typesetter"
+  "blockentity.printingpress.typesetter":"Typesetter",
+  "item.printingpress.type_block": "Type Block"
 }

@@ -1,6 +1,7 @@
 package com.glowbrick.printingpress.item;
 
 import com.glowbrick.printingpress.PrintingPress;
+import com.glowbrick.printingpress.item.custom.TypeBlockItem;
 import com.glowbrick.printingpress.component.Magic;
 import com.glowbrick.printingpress.item.custom.InkBottleItem;
 import net.minecraft.world.item.Item;
@@ -21,6 +22,9 @@ public class ModItems {
     public static final DeferredItem<Item> MAGIC_INK_BOTTLE =
             ITEMS.registerItem("magic_ink_bottle", properties -> new InkBottleItem(properties.component(MAGIC.value(), new Magic(true))));
 
+
+    public static final DeferredItem<Item> TYPE_BLOCK =
+            ITEMS.registerItem("type_block", TypeBlockItem::new,new Item.Properties());
 
 
     public static void register(IEventBus eventBus) {

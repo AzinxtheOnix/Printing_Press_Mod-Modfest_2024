@@ -1,8 +1,13 @@
 package com.glowbrick.printingpress;
 
 import com.glowbrick.printingpress.block.ModBlocks;
+import com.glowbrick.printingpress.block.entity.ModBlockEntities;
 import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
+import com.glowbrick.printingpress.screen.ModMenuTypes;
+import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import org.slf4j.Logger;
 
@@ -42,6 +47,8 @@ public class PrintingPress
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
 
 
@@ -90,5 +97,15 @@ public class PrintingPress
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
+
+        }
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event){
+            event.register(ModMenuTypes.TYPESETTER_MENU.get(), TypesetterScreen::new);
+        }
+
     }
 }

@@ -1,6 +1,8 @@
 package com.glowbrick.printingpress.block.entity.block;
 
+import com.glowbrick.printingpress.block.entity.ModBlockEntities;
 import com.glowbrick.printingpress.item.ModItems;
+import com.glowbrick.printingpress.screen.custom.TypesetterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -50,11 +52,11 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     private int maxProgress = 72;
     private final int DEFAULT_MAX_PROGRESS = 72;
 
-    CompoundTag comptag = new CompoundTag();
+    //CompoundTag comptag = new CompoundTag();
 
 
     public TypesetterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
-        super(, pos, blockState);
+        super(ModBlockEntities.TYPESETTER_BE.get(), pos, blockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
@@ -77,7 +79,7 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
             public int getCount() {
                 return 2;
             }
-        }
+        };
     }
 
     @Override
@@ -88,7 +90,7 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return
+        return new TypesetterMenu(i,inventory,this,this.data);
     }
 
     @Override
@@ -130,6 +132,8 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
+
+
     private void resetProgress() {
         this.progress = 0;
         this.maxProgress = DEFAULT_MAX_PROGRESS;
@@ -138,9 +142,9 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     private void craftItem() {
         Map<Holder<Enchantment>, Integer> enchants = getEnchantment();
 
-        ItemStack output = new ItemStack(ModItems.ENCHANTED_MOVEABLE_TYPE.get());
+        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
 
-        output;
+        //output.enchant(enchats);
 
         itemHandler.extractItem(TYPE_ITEM_SLOT, 1,false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem()));
@@ -163,7 +167,7 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     private boolean hasRecipe() {
         ItemStack input1 = new ItemStack(ModItems.MOVABLE_TYPE.get());
         ItemStack input2 = new ItemStack(Items.ENCHANTED_BOOK);
-        ItemStack output = new ItemStack(ModItems.ENCHANTED_MOVABLE_TYPE.get());
+        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
 
         return canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(TYPE_ITEM_SLOT).getItem() == input1.getItem() &&

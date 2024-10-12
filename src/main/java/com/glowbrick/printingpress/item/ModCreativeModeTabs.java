@@ -23,6 +23,8 @@ public class ModCreativeModeTabs {
                        pOutput.accept(ModItems.MOVABLE_TYPE.get());
                        pOutput.accept(ModBlocks.PRINTINGPRESS);
                        pOutput.accept(ModBlocks.TYPESETTER);
+                       pOutput.accept(ModItems.INK_BOTTLE);
+                       pOutput.accept(ModItems.MAGIC_INK_BOTTLE);
                    }).build());
 
 

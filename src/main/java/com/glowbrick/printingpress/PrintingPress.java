@@ -3,6 +3,7 @@ package com.glowbrick.printingpress;
 import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
+import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -41,6 +42,7 @@ public class PrintingPress
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in.

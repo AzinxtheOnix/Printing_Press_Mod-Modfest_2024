@@ -27,6 +27,8 @@ public class ModCreativeModeTabs {
                        pOutput.accept(ModItems.INK_BOTTLE);
                        pOutput.accept(ModItems.MAGIC_INK_BOTTLE);
                        pOutput.accept(ModItems.TYPE_BLOCK);
+                       pOutput.accept(ModItems.INK_BOTTLE);
+                       pOutput.accept(ModItems.MAGIC_INK_BOTTLE);
                    }).build());
 
 

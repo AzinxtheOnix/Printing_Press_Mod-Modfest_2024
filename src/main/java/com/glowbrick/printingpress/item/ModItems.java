@@ -1,6 +1,8 @@
 package com.glowbrick.printingpress.item;
 
 import com.glowbrick.printingpress.PrintingPress;
+import com.glowbrick.printingpress.component.Magic;
+import com.glowbrick.printingpress.item.custom.InkBottleItem;
 import com.glowbrick.printingpress.item.custom.TypeBlockItem;
 import com.glowbrick.printingpress.component.Magic;
 import com.glowbrick.printingpress.item.custom.InkBottleItem;

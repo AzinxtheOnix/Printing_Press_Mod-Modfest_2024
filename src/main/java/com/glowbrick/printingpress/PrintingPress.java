@@ -4,6 +4,7 @@ import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
 import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
+import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
 import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -47,6 +48,8 @@ public class PrintingPress
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
+
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);

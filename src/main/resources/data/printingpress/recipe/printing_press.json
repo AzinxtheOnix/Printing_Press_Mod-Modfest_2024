@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A":{
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "minecraft:piston"
+    },
+    "C": {
+      "item": "minecraft:leather"
+    },
+    "X": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "X X",
+    "YYY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "printingpress:printing_press"
+  }
+
+}

@@ -2,6 +2,7 @@ package com.glowbrick.printingpress.block;
 
 
 import com.glowbrick.printingpress.PrintingPress;
+import com.glowbrick.printingpress.block.custom.TypesetterBlock;
 import com.glowbrick.printingpress.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +23,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> PRINTINGPRESS = registerBlock("printing_press",
             ()-> new PrintingPressBlock(BlockBehaviour.Properties.of().noOcclusion()));
+
+    public static final DeferredBlock<Block> TYPESETTER = registerBlock("typesetter",
+            ()-> new TypesetterBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "printingpress:item/test_item"
+    "layer0": "printingpress:item/movable_type"
   }
 }

@@ -10,7 +10,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PrintingPress.MOD_ID);
 
-    public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerSimpleItem("test_item"); //ToDo: FIX THIS!
+    public static final DeferredItem<Item> MOVABLE_TYPE =
+            ITEMS.registerItem("movable_type", Item::new, new Item.Properties());
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

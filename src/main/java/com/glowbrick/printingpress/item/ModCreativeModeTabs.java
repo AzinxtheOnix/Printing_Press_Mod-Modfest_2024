@@ -20,7 +20,9 @@ public class ModCreativeModeTabs {
                    .title(Component.translatable("itemGroup.printingpress.printing_press_tab"))
                    .icon(()-> new ItemStack(ModBlocks.PRINTINGPRESS.get()))                                 //may break
                    .displayItems((pParameters, pOutput)->{
+                       pOutput.accept(ModItems.MOVABLE_TYPE.get());
                        pOutput.accept(ModBlocks.PRINTINGPRESS);
+                       pOutput.accept(ModBlocks.TYPESETTER);
                    }).build());
 
 

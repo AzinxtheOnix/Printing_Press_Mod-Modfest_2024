@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Z": {
+      "item": "printingpress:movable_type"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "XZX",
+    "YYY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "printingpress:typesetter"
+  }
+
+}

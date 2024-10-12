@@ -18,15 +18,12 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<TypesetterMenu>> TYPESETTER_MENU =
             registerMenuType("typesetter_menu", TypesetterMenu::new);
 
-    private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
-                                                                                                              IContainerFactory<T> factory) {
-        return MENUS.register(name, () -> IMenuTypeExtension.create(factory));
+    private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String pName, IContainerFactory<T> factory) {
+        return MENUS.register(pName, () -> IMenuTypeExtension.create(factory));
     }
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);
     }
-
-
 
 }

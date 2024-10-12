@@ -55,7 +55,7 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     //CompoundTag comptag = new CompoundTag();
 
 
-    public TypesetterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public TypesetterBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.TYPESETTER_BE.get(), pos, blockState);
         this.data = new ContainerData() {
             @Override

@@ -12,6 +12,8 @@ public class TypeBlockItem extends Item {
         super(properties.stacksTo(1));
     }
 
+
+
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;

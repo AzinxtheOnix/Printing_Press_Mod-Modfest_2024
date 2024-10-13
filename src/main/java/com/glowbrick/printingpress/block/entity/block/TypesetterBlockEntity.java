@@ -144,9 +144,9 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        Map<Holder<Enchantment>, Integer> enchants = getEnchantment();
+        ItemEnchantments enchants = getEnchantment();
 
-        int enchantsize = enchants.size();
+        /*int enchantsize = enchants.size();
         List<Holder<Enchantment>> keys = new ArrayList<>(enchantsize);
         List<Integer> values = new ArrayList<>(enchantsize);
         for(Map.Entry<Holder<Enchantment>,Integer> entry: enchants.entrySet()) {
@@ -158,7 +158,9 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
         String newvalues = values.toString();
 
         ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
-        HeldEnchantments data = new HeldEnchantments(newkeys, newvalues);
+        HeldEnchantments data = new HeldEnchantments(newkeys, newvalues);*/
+        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
+        HeldEnchantments data = new HeldEnchantments(enchants);
 
         output.set(ModDataComponentTypes.HELD_ENCHANTMENTS.get(), data);
 
@@ -195,19 +197,22 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
          return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty();
     }
 
-    private Map<Holder<Enchantment>, Integer> getEnchantment() {
+    private ItemEnchantments getEnchantment() {
 
         ItemStack itemStack = this.itemHandler.getStackInSlot(TOBECOPIED_ITEM_SLOT);
         ItemEnchantments enchantments = itemStack.getTagEnchantments();
 
-        Holder<Enchantment> enchantList[] = (Holder<Enchantment>[]) enchantments.keySet().toArray();
-        Map<Holder<Enchantment>, Integer> enchantments1  = new HashMap<Holder<Enchantment>, Integer>();
+        //Holder<Enchantment> enchantList[] = (Holder<Enchantment>[]) enchantments.keySet().toArray();
 
-        for (int i= 0; i < enchantList.length; i++){
-            enchantments1.put(enchantList[i],itemStack.getEnchantmentLevel(enchantList[i]));
-        }
+        //Map<Holder<Enchantment>, Integer> enchantments1  = new HashMap<Holder<Enchantment>, Integer>();
 
-        return enchantments1;
+
+
+        //for (int i= 0; i < enchantList.length; i++){
+        //    enchantments1.put(enchantList[i],itemStack.getEnchantmentLevel(enchantList[i]));
+        //}
+
+        return enchantments;
     }
 
     @Nullable

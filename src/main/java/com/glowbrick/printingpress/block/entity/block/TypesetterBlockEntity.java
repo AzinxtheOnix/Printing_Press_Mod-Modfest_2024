@@ -206,8 +206,6 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
 
         //Map<Holder<Enchantment>, Integer> enchantments1  = new HashMap<Holder<Enchantment>, Integer>();
 
-
-
         //for (int i= 0; i < enchantList.length; i++){
         //    enchantments1.put(enchantList[i],itemStack.getEnchantmentLevel(enchantList[i]));
         //}

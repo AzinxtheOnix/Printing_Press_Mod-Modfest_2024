@@ -43,8 +43,8 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    private static final int TYPE_ITEM_SLOT = 0;
-    private static final int TOBECOPIED_ITEM_SLOT = 1;
+    private static final int TYPE_ITEM_SLOT = 1;
+    private static final int TOBECOPIED_ITEM_SLOT = 0;
     private static final int OUTPUT_SLOT = 2;
 
     protected final ContainerData data;

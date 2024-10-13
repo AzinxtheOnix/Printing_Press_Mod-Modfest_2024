@@ -52,7 +52,6 @@ public class PrintingPress
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
-        ModDataComponentTypes.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in.

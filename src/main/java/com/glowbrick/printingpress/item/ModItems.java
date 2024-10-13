@@ -4,8 +4,6 @@ import com.glowbrick.printingpress.PrintingPress;
 import com.glowbrick.printingpress.component.Magic;
 import com.glowbrick.printingpress.item.custom.InkBottleItem;
 import com.glowbrick.printingpress.item.custom.TypeBlockItem;
-import com.glowbrick.printingpress.component.Magic;
-import com.glowbrick.printingpress.item.custom.InkBottleItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;

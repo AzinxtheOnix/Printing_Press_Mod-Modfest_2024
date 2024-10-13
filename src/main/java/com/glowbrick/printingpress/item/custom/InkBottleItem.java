@@ -1,7 +1,6 @@
 package com.glowbrick.printingpress.item.custom;
 
 import com.glowbrick.printingpress.component.ModDataComponentTypes;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 

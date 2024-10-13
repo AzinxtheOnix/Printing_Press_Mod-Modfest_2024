@@ -1,6 +1,8 @@
 package com.glowbrick.printingpress.block.entity.block;
 
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
+import com.glowbrick.printingpress.component.HeldEnchantments;
+import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import com.glowbrick.printingpress.item.ModItems;
 import com.glowbrick.printingpress.screen.custom.TypesetterMenu;
 import net.minecraft.core.BlockPos;
@@ -29,7 +31,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
@@ -142,9 +146,21 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     private void craftItem() {
         Map<Holder<Enchantment>, Integer> enchants = getEnchantment();
 
-        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
+        int enchantsize = enchants.size();
+        List<Holder<Enchantment>> keys = new ArrayList<>(enchantsize);
+        List<Integer> values = new ArrayList<>(enchantsize);
+        for(Map.Entry<Holder<Enchantment>,Integer> entry: enchants.entrySet()) {
+            keys.add(entry.getKey());
+            values.add(entry.getValue());
+        }
 
-        //output.enchant(enchats);
+        String newkeys = keys.toString();
+        String newvalues = values.toString();
+
+        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
+        HeldEnchantments data = new HeldEnchantments(newkeys, newvalues);
+
+        output.set(ModDataComponentTypes.HELD_ENCHANTMENTS.get(), data);
 
         itemHandler.extractItem(TYPE_ITEM_SLOT, 1,false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem()));
@@ -183,6 +199,7 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
 
         ItemStack itemStack = this.itemHandler.getStackInSlot(TOBECOPIED_ITEM_SLOT);
         ItemEnchantments enchantments = itemStack.getTagEnchantments();
+
         Holder<Enchantment> enchantList[] = (Holder<Enchantment>[]) enchantments.keySet().toArray();
         Map<Holder<Enchantment>, Integer> enchantments1  = new HashMap<Holder<Enchantment>, Integer>();
 

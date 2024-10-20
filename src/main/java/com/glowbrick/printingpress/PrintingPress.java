@@ -6,6 +6,7 @@ import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
 import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
+import com.glowbrick.printingpress.screen.custom.PrintingPressScreen;
 import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -107,6 +108,7 @@ public class PrintingPress
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event){
             event.register(ModMenuTypes.TYPESETTER_MENU.get(), TypesetterScreen::new);
+            event.register(ModMenuTypes.PRINTINGPRESS_MENU.get(), PrintingPressScreen::new);
         }
 
     }

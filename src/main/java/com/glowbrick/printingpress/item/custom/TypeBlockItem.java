@@ -31,21 +31,6 @@ public class TypeBlockItem extends Item {
         return true;
     }
 
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if(Screen.hasShiftDown()){
-            tooltipComponents.add(Component.translatable("tooltip.printingpress.typeblock.tooltip.1"));
-            if(stack.get(DataComponents.STORED_ENCHANTMENTS) != null){
-                tooltipComponents.add(Component.literal("Tooltip: " + stack.get(DataComponents.STORED_ENCHANTMENTS)));
-            }else{
-                tooltipComponents.add(Component.literal("Empty"));
-            }
-        }
-
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
-
     public static ItemStack testMethod (EnchantmentInstance instance) {
         ItemStack itemstack = new ItemStack(ModItems.TYPE_BLOCK.get());
         itemstack.enchant(instance.enchantment, instance.level);

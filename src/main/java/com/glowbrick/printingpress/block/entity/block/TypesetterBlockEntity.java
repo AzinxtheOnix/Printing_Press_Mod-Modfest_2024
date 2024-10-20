@@ -1,15 +1,9 @@
 package com.glowbrick.printingpress.block.entity.block;
 
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
-import com.glowbrick.printingpress.component.HeldEnchantments;
-import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import com.glowbrick.printingpress.item.ModItems;
-import com.glowbrick.printingpress.item.custom.TypeBlockItem;
 import com.glowbrick.printingpress.screen.custom.TypesetterMenu;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import net.minecraft.advancements.critereon.ItemEnchantmentsPredicate;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -24,16 +18,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
@@ -60,7 +50,6 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     private int maxProgress = 72;
     private final int DEFAULT_MAX_PROGRESS = 72;
 
-    //CompoundTag comptag = new CompoundTag();
 
 
     public TypesetterBlockEntity(BlockPos pos, BlockState blockState) {
@@ -148,94 +137,17 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemEnchantments enchants = getEnchantment();
-
-        /*int enchantsize = enchants.size();
-        List<Holder<Enchantment>> keys = new ArrayList<>(enchantsize);
-        List<Integer> values = new ArrayList<>(enchantsize);
-        for(Map.Entry<Holder<Enchantment>,Integer> entry: enchants.entrySet()) {
-            keys.add(entry.getKey());
-            values.add(entry.getValue());
-        }
-
-        String newkeys = keys.toString();
-        String newvalues = values.toString();
-
-        ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
-        HeldEnchantments data = new HeldEnchantments(newkeys, newvalues);*/
-        //ItemStack output = new ItemStack(ModItems.TYPE_BLOCK.get());
-        //HeldEnchantments data = new HeldEnchantments(enchants);
         ItemStack itemStack2 = this.itemHandler.getStackInSlot(TOBECOPIED_ITEM_SLOT);
         ItemStack itemStack1 = new ItemStack(ModItems.TYPE_BLOCK.get());
-        //Set<Holder<Enchantment>> newone2 = itemStack.getTagEnchantments().keySet();
-
-        //Iterator<Holder<Enchantment>> iterator = newone2.iterator();
-
-        //Holder<Enchantment> newone3 = iterator.next();
-        //if (iterator.hasNext()) {
-           // newone3 = iterator.next();
-        //}
-        int i = 0;
 
         if (hasRecipe()){
-            ItemEnchantments.Mutable itemMutable = new ItemEnchantments.Mutable(EnchantmentHelper.getEnchantmentsForCrafting(itemStack1));
             ItemEnchantments itemenchantments = EnchantmentHelper.getEnchantmentsForCrafting(itemStack2);
-            boolean flag2 = false;
-            boolean flag3 = false;
 
-            for (Object2IntMap.Entry<Holder<Enchantment>> entry : itemenchantments.entrySet()) {
-
-                Holder<Enchantment> holder = entry.getKey();
-                int i2 = itemMutable.getLevel(holder);
-                int j2 = entry.getIntValue();
-                j2 = i2 == j2 ? j2 + 1 : Math.max(j2, i2);
-                Enchantment enchantment = holder.value();
-
-                boolean flag1 = itemStack1.supportsEnchantment(holder);
-
-                for (Holder<Enchantment> holder1 : itemMutable.keySet()) {
-                    if (!holder1.equals(holder) && !Enchantment.areCompatible(holder, holder1)) {
-                        flag1 = false;
-                        i++;
-                    }
-                }
-                if (!flag1) {
-                    flag3 = true;
-                } else {
-                    flag2 = true;
-                    if (j2 > enchantment.getMaxLevel()) {
-                        j2 = enchantment.getMaxLevel();
-                    }
-
-                    itemMutable.set(holder, j2);
-                    int l3 = enchantment.getAnvilCost();
-                    if (true) {
-                        l3 = Math.max(1, l3 / 2);
-                    }
-
-                    i += l3 * j2;
-                    if (itemStack1.getCount() > 1) {
-                        i = 40;
-                    }
-                }
-            }
+            itemStack1.set(DataComponents.STORED_ENCHANTMENTS, itemenchantments);
             itemHandler.setStackInSlot(OUTPUT_SLOT, itemStack1);
         }
 
-
-        /*for (Holder<Enchantment> s : newone2){
-            EnchantmentInstance instance1 = new EnchantmentInstance(s, itemStack.getEnchantmentLevel(s));
-        }*/
-
-        //EnchantmentInstance newone = EnchantmentInstance(itemStack, itemStack.getEnchantmentLevel(itemStack));
-        //EnchantmentInstance instance1 = new EnchantmentInstance(newone3, itemStack.getEnchantmentLevel(newone3));
-
-        //ItemStack output = new ItemStack(TypeBlockItem.testMethod(instance1).getItem());
-        //output.set(ModDataComponentTypes.HELD_ENCHANTMENTS.get(), data);
-        //output.set(DataComponents.STORED_ENCHANTMENTS, enchants);
-        //output.has()
         itemHandler.extractItem(TYPE_ITEM_SLOT, 1, false);
-        //itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem()));
     }
 
     private boolean hasCraftingFinished() {
@@ -260,26 +172,10 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
         return canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(TYPE_ITEM_SLOT).getItem() == input1.getItem() &&
                 this.itemHandler.getStackInSlot(TOBECOPIED_ITEM_SLOT).getItem() == input2.getItem();
-
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
          return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty();
-    }
-
-    private ItemEnchantments getEnchantment() {
-        ItemStack itemStack = this.itemHandler.getStackInSlot(TOBECOPIED_ITEM_SLOT);
-        ItemEnchantments enchantments = itemStack.getTagEnchantments();
-
-        //Holder<Enchantment> enchantList[] = (Holder<Enchantment>[]) enchantments.keySet().toArray();
-
-        //Map<Holder<Enchantment>, Integer> enchantments1  = new HashMap<Holder<Enchantment>, Integer>();
-
-        //for (int i= 0; i < enchantList.length; i++){
-        //    enchantments1.put(enchantList[i],itemStack.getEnchantmentLevel(enchantList[i]));
-        //}
-
-        return enchantments;
     }
 
     @Nullable

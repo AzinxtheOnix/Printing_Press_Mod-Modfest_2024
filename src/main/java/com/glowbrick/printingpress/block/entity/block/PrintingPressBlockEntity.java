@@ -7,6 +7,7 @@ import com.glowbrick.printingpress.item.ModItems;
 import com.glowbrick.printingpress.screen.custom.PrintingPressMenu;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -20,12 +21,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
@@ -35,7 +34,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         protected void onContentsChanged(int slot) {
             setChanged();
             if(!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 4);
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
     };
@@ -72,14 +71,14 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
             @Override
             public int getCount() {
-                return -1;
+                return 2;
             }
         };
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.printingpress.printing_press");
+        return Component.translatable("blockentity.printingpress.printing_press");
     }
 
     @Nullable
@@ -89,7 +88,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, Provider pRegistries) {
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
         pTag.putInt("printing_press.progress", progress);
         pTag.putInt("printing_press.max_progress", maxProgress);
@@ -98,7 +97,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, Provider pRegistries) {
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt("printing_press.progress");
@@ -184,7 +183,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     }
 
     @Override
-    public CompoundTag getUpdateTag(Provider pRegistries) {
+    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
     }
 }

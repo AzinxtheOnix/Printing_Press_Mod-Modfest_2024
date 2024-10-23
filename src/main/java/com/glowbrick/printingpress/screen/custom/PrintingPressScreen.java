@@ -9,17 +9,12 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.neoforge.client.event.ContainerScreenEvent.Render;
 
 public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMenu> {
     private static final ResourceLocation GUI_TEXTURE = 
         ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/PrintingPress_GUI.png");
     private static final ResourceLocation ARROW_TEXTURE = 
-        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/arrow_progress.png");
-    
-    public PrintingPressScreen(PrintingPressMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
-        super(pMenu, pPlayerInventory, pTitle);
-    }
+        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/arrow_progress.png");
     
     @Override
     protected void init() {
@@ -27,6 +22,10 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
 
         this.inventoryLabelY = 10000;
         this.titleLabelY = 10000;
+    }
+
+    public PrintingPressScreen(PrintingPressMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+        super(pMenu, pPlayerInventory, pTitle);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(ARROW_TEXTURE, x+85, y+30, 176, 0, 8, menu.getScaledArrowProgress());
+            guiGraphics.blit(ARROW_TEXTURE, x+73, y+35, 176, 0, 8, menu.getScaledArrowProgress());
         }
     }
 
@@ -54,6 +53,4 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
         super.render(guiGraphics, mouseX, mouseY, delta);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
-
-    
 }

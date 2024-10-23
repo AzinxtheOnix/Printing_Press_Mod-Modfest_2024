@@ -1,7 +1,5 @@
 package com.glowbrick.printingpress.screen.custom;
 
-import javax.annotation.Nullable;
-
 import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.block.entity.block.PrintingPressBlockEntity;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
@@ -12,7 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -27,22 +24,22 @@ public class PrintingPressMenu extends AbstractContainerMenu {
 
 
     public PrintingPressMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(pContainerId));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
     public PrintingPressMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.PRINTINGPRESS_MENU.get(), pContainerId);
-        blockEntity = ((PrintingPressBlockEntity) entity);
+        this.blockEntity = ((PrintingPressBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 8, 62));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 52, 34));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 104, 34));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 152, 62));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 10, 33));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 33, 33));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 53, 33));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 99, 29));
 
         addDataSlots(data);
     }

@@ -3,6 +3,7 @@
   "item.printingpress.ink_bottle": "Ink Bottle",
   "item.printingpress.magic_ink_bottle": "Magic Ink Bottle",
   "block.printingpress.printing_press": "Printing Press",
+  "blockentity.printingpress.printing_press": "Printing Press",
   "itemGroup.printingpress.printing_press_tab": "Glowbrick's Printing Press",
   "block.printingpress.typesetter": "Typesetter",
   "blockentity.printingpress.typesetter":"Typesetter",

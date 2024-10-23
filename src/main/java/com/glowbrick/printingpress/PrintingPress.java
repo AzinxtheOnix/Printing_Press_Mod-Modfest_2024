@@ -10,7 +10,6 @@ import com.glowbrick.printingpress.screen.custom.PrintingPressScreen;
 import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

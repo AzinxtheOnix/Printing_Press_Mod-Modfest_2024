@@ -32,7 +32,7 @@ public class PrintingPressBlock extends BaseEntityBlock {
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return null;
+        return CODEC;
     }
 
     /* BLOCK ENTITY */

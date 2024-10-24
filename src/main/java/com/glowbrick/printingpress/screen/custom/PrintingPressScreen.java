@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMenu> {
     private static final ResourceLocation GUI_TEXTURE = 
-        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/PrintingPress_GUI.png");
+        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/printingpress_gui.png");
     private static final ResourceLocation ARROW_TEXTURE = 
         ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/arrow_progress.png");
     

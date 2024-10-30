@@ -43,7 +43,7 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(ARROW_TEXTURE, x+73, y+35, 176, 0, 8, menu.getScaledArrowProgress());
+            guiGraphics.blit(ARROW_TEXTURE, x+73, y+35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 

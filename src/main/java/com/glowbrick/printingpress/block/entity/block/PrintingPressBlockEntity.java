@@ -139,6 +139,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     private void craftItem() {
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
         itemHandler.extractItem(BLANK_TEMPLATE_SLOT, 1, false);
+        itemHandler.extractItem(INK_SLOT, 1, false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                                     itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
     }

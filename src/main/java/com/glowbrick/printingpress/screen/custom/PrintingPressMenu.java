@@ -36,10 +36,10 @@ public class PrintingPressMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 10, 33));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 33, 33));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 53, 33));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 99, 29));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47));      // Blank Template Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22));     // Movable Type Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 8, 62));      // Ink Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 104, 34));     // Output Slot
 
         addDataSlots(data);
     }

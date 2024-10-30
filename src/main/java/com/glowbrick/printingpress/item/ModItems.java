@@ -4,7 +4,9 @@ import com.glowbrick.printingpress.PrintingPress;
 import com.glowbrick.printingpress.component.Magic;
 import com.glowbrick.printingpress.item.custom.InkBottleItem;
 import com.glowbrick.printingpress.item.custom.TypeBlockItem;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -24,7 +26,8 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> TYPE_BLOCK =
-            ITEMS.registerItem("type_block", TypeBlockItem::new,new Item.Properties());
+            ITEMS.registerItem("type_block", properties -> new TypeBlockItem(new Item.Properties()
+                    .stacksTo(1).component(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY)));
 
 
     public static void register(IEventBus eventBus) {

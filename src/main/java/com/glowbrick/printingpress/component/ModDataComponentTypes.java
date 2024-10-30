@@ -6,8 +6,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.UnaryOperator;
-
 public class ModDataComponentTypes {
     public static final DeferredRegister.DataComponents REGISTRAR =
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, "printingpress");
@@ -18,4 +16,8 @@ public class ModDataComponentTypes {
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Magic>> MAGIC =
             REGISTRAR.registerComponentType("magic", builder -> builder.persistent(Magic.CODEC));
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<HeldEnchantments>> HELD_ENCHANTMENTS =
+            REGISTRAR.registerComponentType("held_enchantments", builder -> builder.persistent(HeldEnchantments.CODEC2));
+
 }

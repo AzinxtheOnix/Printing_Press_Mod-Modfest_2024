@@ -34,8 +34,8 @@ public class TypesetterMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,0,8,62));
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,1,54,34));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,0,45,15));
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,1,45,55));
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler,2,104,34));
 
         addDataSlots(data);

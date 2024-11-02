@@ -24,7 +24,7 @@ public class PrintingPressMenu extends AbstractContainerMenu {
 
 
     public PrintingPressMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public PrintingPressMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -54,6 +54,23 @@ public class PrintingPressMenu extends AbstractContainerMenu {
         int arrowPixelSize = 24;
 
         return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
+    }
+
+    public int getScaledInkProgress() {
+        int inkLevel = this.data.get(2);
+        int maxInkLevel = this.data.get(3);
+        int inkPixelSize = 52;
+
+        return maxInkLevel != 0 && inkLevel != 0 ? inkLevel * inkPixelSize / maxInkLevel : 0;
+    }
+
+    public int getScaledPressProgress() {
+        int progress = this.data.get(0);
+        int pressPixelSize = 15;
+        int scale = 40;
+        int return_scale = (progress % scale) * pressPixelSize / scale;
+        System.out.printf("%d %d\n", progress, return_scale);
+        return return_scale;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

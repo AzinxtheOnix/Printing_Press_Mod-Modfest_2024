@@ -15,7 +15,12 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
         ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/printingpress_gui.png");
     private static final ResourceLocation ARROW_TEXTURE = 
         ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/arrow_progress.png");
-    
+    private static final ResourceLocation INK_LEVEL_TEXTURE = 
+        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/ink_progress.png");
+    private static final ResourceLocation PRESS_TEXTURE = 
+        ResourceLocation.fromNamespaceAndPath(PrintingPress.MOD_ID, "textures/gui/printing_press/press.png");
+
+
     @Override
     protected void init() {
         super.init();
@@ -39,11 +44,23 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(pGuiGraphics, x, y);
+        renderInkLevel(pGuiGraphics, x, y);
+        renderPressAnimation(pGuiGraphics, x, y);
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
             guiGraphics.blit(ARROW_TEXTURE, x+73, y+35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+        }
+    }
+
+    private void renderInkLevel(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(INK_LEVEL_TEXTURE, x+7, y+6+52 - menu.getScaledInkProgress(), 0, 52 - menu.getScaledInkProgress(), 18, menu.getScaledInkProgress(), 18, 52);
+    }
+
+    private void renderPressAnimation(GuiGraphics guiGraphics, int x, int y) {
+        if(menu.isCrafting()) {
+            guiGraphics.blit(PRESS_TEXTURE, x+48, y+9, 0, 0, 28, menu.getScaledPressProgress(), 28, 15);
         }
     }
 

@@ -46,8 +46,11 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     private final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 72;
-    private final int DEFAULT_MAX_PROGRESS = 72;
+    private int maxProgress = 200;
+    private final int DEFAULT_MAX_PROGRESS = 200;
+    private int inkLevel = 0;
+    private int maxInkLevel = 500;
+    private final int DEFAULT_MAX_INK_LEVEL = 500;
 
     public PrintingPressBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.PRINTINGPRESS_BE.get(), pPos, pBlockState);
@@ -57,6 +60,8 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
                 return switch (pIndex) {
                     case 0 -> PrintingPressBlockEntity.this.progress;
                     case 1 -> PrintingPressBlockEntity.this.maxProgress;
+                    case 2 -> PrintingPressBlockEntity.this.inkLevel;
+                    case 3 -> PrintingPressBlockEntity.this.maxInkLevel;
                     default -> 0;
                 };
             }
@@ -66,12 +71,14 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
                 switch(pIndex) {
                     case 0: PrintingPressBlockEntity.this.progress = pValue;
                     case 1: PrintingPressBlockEntity.this.maxProgress = pValue;
+                    case 2: PrintingPressBlockEntity.this.inkLevel = pValue;
+                    case 3: PrintingPressBlockEntity.this.maxInkLevel = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
     }
@@ -92,6 +99,8 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
         pTag.putInt("printing_press.progress", progress);
         pTag.putInt("printing_press.max_progress", maxProgress);
+        pTag.putInt("printing_press.ink_level", inkLevel);
+        pTag.putInt("printing_press.max_ink_level", maxInkLevel);
 
         super.saveAdditional(pTag, pRegistries);
     }
@@ -102,6 +111,8 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt("printing_press.progress");
         maxProgress = pTag.getInt("printing_press.max_progress");
+        inkLevel = pTag.getInt("printing_press.ink_level");
+        maxInkLevel = pTag.getInt("printing_press.max_ink_level");
     }
 
     public void drops() {
@@ -114,6 +125,11 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     // Printing Press Logic
     public void tick(Level level, BlockPos pPos, BlockState pState) {
+        // Ink Deposit Logic
+        
+
+
+        // Crafting Logic
         if(hasRecipe() && isOutputSlotEmptyOrReceivable()) {
             increaseCraftingProgress();
             setChanged(level, pPos, pState);

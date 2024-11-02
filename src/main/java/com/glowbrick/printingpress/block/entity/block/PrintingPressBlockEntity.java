@@ -126,7 +126,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     // Printing Press Logic
     public void tick(Level level, BlockPos pPos, BlockState pState) {
         // Ink Deposit Logic
-        
+
 
 
         // Crafting Logic
@@ -162,7 +162,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     private boolean hasRecipe() {
         ItemStack templateInput = new ItemStack(Items.BOOK);
-        ItemStack movableTypeInput = new ItemStack(ModItems.MOVABLE_TYPE.get());
+        ItemStack movableTypeInput = new ItemStack(ModItems.TYPE_BLOCK.get());
         ItemStack inkInput = new ItemStack(ModItems.INK_BOTTLE.get());
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
         

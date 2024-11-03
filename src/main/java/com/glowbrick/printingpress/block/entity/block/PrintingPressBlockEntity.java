@@ -1,5 +1,7 @@
 package com.glowbrick.printingpress.block.entity.block;
 
+import static com.glowbrick.printingpress.component.ModDataComponentTypes.MAGIC;
+
 import javax.annotation.Nullable;
 
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
@@ -227,12 +229,13 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         ItemStack movableTypeInput = new ItemStack(ModItems.TYPE_BLOCK.get());
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
 
-
-        
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
+        if(currentInkMode == MAGIC_INK_MODE) {
+            return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(BLANK_TEMPLATE_SLOT).getItem() == templateInput.getItem() &&
                 this.itemHandler.getStackInSlot(MOVABLE_TYPE_SLOT).getItem() == movableTypeInput.getItem() &&
                 inkLevel > 0;
+        }
+        return false;
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

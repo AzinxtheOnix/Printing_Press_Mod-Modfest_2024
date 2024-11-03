@@ -1,25 +1,36 @@
 
-Installation information
+Glowbrick's Printing Press Mod
 =======
+This mod aims to allow enchanted book duplication. This is achieved 
+utilizing the past technologies of a printing press. Glowbrick's Printing Press Mod was made for [ModFest 1.21](https://modfest.net/1.21).
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+Content added:
+=======
+Blocks added include the following:<br>
+<ul>
+<li>Printing Press - crafted with 1 paper, 1 piston, 1 leather, 2 wooden fences (with an empty slot between), and 3 planks</li>
+<li>Typesetter - crafted with 2 movable type, with 1 iron ingot between, 3 planks</li>
+</ul>
+Items added include the following:<br>
+<ul>
+<li>Ink Bottle - crafted with 1 glass bottle and 1 black dye</li>
+<li>Magic Ink Bottle - crafted with 1 ink bottle and 1 bottle o' enchanting or 1 enchanted book </li>
+<li>Movable Type - crafted with <br>
+<li>Type Block - crafted in a Typesetter with 1 enchanted book and 1 movable type</li>
+</ul>
+To duplicate an enchanted book:<br>
+<ol>
+<li>Craft a Type Block in a Typesetter with the desired enchanted book and a Movable Type
+<li>Print an Enchanted book in a Printing Press with the desired Type Block, 1 Magic Ink Bottle, and a book</li>
+</ol>
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
+Glowbrick Team:
 ============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+Ilian - Krysawyr<br>
+Carter - Bitflare<br>
+Mike - Azinx
 
-Additional Resources: 
+Special Thanks to: 
 ==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+Kaupenjoe: [Neoforge Modding Tutorial](https://courses.kaupenjoe.net/)<br>
+diesieben07: [Player Inventory Menu Implementation](https://github.com/diesieben07/SevenCommons)

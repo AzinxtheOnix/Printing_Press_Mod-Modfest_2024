@@ -27,6 +27,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import oshi.jna.platform.mac.SystemB.Pri;
 
 public class PrintingPressBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(4) {
@@ -49,8 +50,11 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     private int maxProgress = 200;
     private final int DEFAULT_MAX_PROGRESS = 200;
     private int inkLevel = 0;
-    private int maxInkLevel = 500;
-    private final int DEFAULT_MAX_INK_LEVEL = 500;
+    private int maxInkLevel = 1000;
+    private final int DEFAULT_MAX_INK_LEVEL = 1000;
+    private int currentInkMode = 0;
+    private final int INK_MODE = 1;
+    private final int MAGIC_INK_MODE = 2;
 
     public PrintingPressBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.PRINTINGPRESS_BE.get(), pPos, pBlockState);
@@ -62,6 +66,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
                     case 1 -> PrintingPressBlockEntity.this.maxProgress;
                     case 2 -> PrintingPressBlockEntity.this.inkLevel;
                     case 3 -> PrintingPressBlockEntity.this.maxInkLevel;
+                    case 4 -> PrintingPressBlockEntity.this.currentInkMode;
                     default -> 0;
                 };
             }
@@ -73,12 +78,13 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
                     case 1: PrintingPressBlockEntity.this.maxProgress = pValue;
                     case 2: PrintingPressBlockEntity.this.inkLevel = pValue;
                     case 3: PrintingPressBlockEntity.this.maxInkLevel = pValue;
+                    case 4: PrintingPressBlockEntity.this.currentInkMode = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 4;
+                return 5;
             }
         };
     }
@@ -101,6 +107,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         pTag.putInt("printing_press.max_progress", maxProgress);
         pTag.putInt("printing_press.ink_level", inkLevel);
         pTag.putInt("printing_press.max_ink_level", maxInkLevel);
+        pTag.putInt("printing_press.current_ink_mode", currentInkMode);
 
         super.saveAdditional(pTag, pRegistries);
     }
@@ -113,6 +120,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         maxProgress = pTag.getInt("printing_press.max_progress");
         inkLevel = pTag.getInt("printing_press.ink_level");
         maxInkLevel = pTag.getInt("printing_press.max_ink_level");
+        currentInkMode = pTag.getInt("printing_press.current_ink_mode");
     }
 
     public void drops() {
@@ -126,8 +134,27 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     // Printing Press Logic
     public void tick(Level level, BlockPos pPos, BlockState pState) {
         // Ink Deposit Logic
+        ItemStack inkItem = new ItemStack(ModItems.INK_BOTTLE.get());
+        ItemStack magicInkItem = new ItemStack(ModItems.MAGIC_INK_BOTTLE.get());
+        ItemStack inkInput = this.itemHandler.getStackInSlot(INK_SLOT);
 
+        if(inkInput.getItem() == inkItem.getItem() && currentInkMode != MAGIC_INK_MODE && inkLevel < maxInkLevel) {
+            System.out.println("Ink Found");
+            currentInkMode = INK_MODE;
+            inkLevel = inkLevel + 200;
+            itemHandler.extractItem(INK_SLOT, 1, false);
+        }
 
+        if(inkInput.getItem() == magicInkItem.getItem() && currentInkMode != INK_MODE && inkLevel < maxInkLevel) {
+            System.out.println("Magic Ink Found");
+            currentInkMode = MAGIC_INK_MODE;
+            inkLevel = inkLevel + 200;
+            itemHandler.extractItem(INK_SLOT, 1, false);
+        }
+
+        if(inkLevel > maxInkLevel) {
+            inkLevel = maxInkLevel;
+        }
 
         // Crafting Logic
         if(hasRecipe() && isOutputSlotEmptyOrReceivable()) {
@@ -150,12 +177,12 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     private void increaseCraftingProgress() {
         progress++;
+        inkLevel--;
     }
 
     private void craftItem() {
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
         itemHandler.extractItem(BLANK_TEMPLATE_SLOT, 1, false);
-        itemHandler.extractItem(INK_SLOT, 1, false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                                     itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
     }
@@ -163,13 +190,12 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     private boolean hasRecipe() {
         ItemStack templateInput = new ItemStack(Items.BOOK);
         ItemStack movableTypeInput = new ItemStack(ModItems.TYPE_BLOCK.get());
-        ItemStack inkInput = new ItemStack(ModItems.INK_BOTTLE.get());
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
         
         return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(BLANK_TEMPLATE_SLOT).getItem() == templateInput.getItem() &&
                 this.itemHandler.getStackInSlot(MOVABLE_TYPE_SLOT).getItem() == movableTypeInput.getItem() &&
-                this.itemHandler.getStackInSlot(INK_SLOT).getItem() == inkInput.getItem();
+                inkLevel > 0;
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

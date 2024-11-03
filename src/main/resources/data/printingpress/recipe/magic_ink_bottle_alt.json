@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:enchanted_book"
+    },
+    {
+      "item": "printingpress:ink_bottle"
+    }
+  ],
+  "result":
+    {
+      "count": 1,
+      "id": "printingpress:magic_ink_bottle"
+    }
+}

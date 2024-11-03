@@ -1,5 +1,7 @@
 package com.glowbrick.printingpress.block.entity.block;
 
+import static com.glowbrick.printingpress.component.ModDataComponentTypes.MAGIC;
+
 import javax.annotation.Nullable;
 
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
@@ -30,7 +32,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import oshi.jna.platform.mac.SystemB.Pri;
 
 public class PrintingPressBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(4) {
@@ -40,6 +41,30 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
             if(!level.isClientSide()) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
+        }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            switch(slot) {
+                case 0:
+                    if(Items.BOOK != stack.getItem()) {
+                        return false;
+                    }
+                    break;
+                case 1:
+                    if(ModItems.TYPE_BLOCK.get() != stack.getItem()) {
+                        return false;
+                    }
+                    break;
+                case 2:
+                    if(ModItems.MAGIC_INK_BOTTLE.get() != stack.getItem()) {
+                        return false;
+                    }
+                    break;
+                case 3:
+                    return false;
+            }
+            return true;
         }
     };
 
@@ -204,12 +229,13 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         ItemStack movableTypeInput = new ItemStack(ModItems.TYPE_BLOCK.get());
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
 
-
-        
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
+        if(currentInkMode == MAGIC_INK_MODE) {
+            return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(BLANK_TEMPLATE_SLOT).getItem() == templateInput.getItem() &&
                 this.itemHandler.getStackInSlot(MOVABLE_TYPE_SLOT).getItem() == movableTypeInput.getItem() &&
                 inkLevel > 0;
+        }
+        return false;
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

@@ -2,7 +2,6 @@ package com.glowbrick.printingpress.screen.custom;
 
 import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.block.entity.block.PrintingPressBlockEntity;
-import com.glowbrick.printingpress.item.ModItems;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -14,7 +13,6 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;

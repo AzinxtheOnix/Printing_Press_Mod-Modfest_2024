@@ -17,7 +17,4 @@ public class ModDataComponentTypes {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Magic>> MAGIC =
             REGISTRAR.registerComponentType("magic", builder -> builder.persistent(Magic.CODEC));
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<HeldEnchantments>> HELD_ENCHANTMENTS =
-            REGISTRAR.registerComponentType("held_enchantments", builder -> builder.persistent(HeldEnchantments.CODEC2));
-
 }

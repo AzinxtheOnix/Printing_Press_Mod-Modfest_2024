@@ -1,7 +1,5 @@
 package com.glowbrick.printingpress.block.entity.block;
 
-import static com.glowbrick.printingpress.component.ModDataComponentTypes.MAGIC;
-
 import javax.annotation.Nullable;
 
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
@@ -10,7 +8,6 @@ import com.glowbrick.printingpress.screen.custom.PrintingPressMenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -26,7 +23,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -209,13 +205,15 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     private void increaseCraftingProgress() {
         progress++;
-        inkLevel--;
+
     }
 
     private void craftItem() {
         ItemStack typeBlock = this.itemHandler.getStackInSlot(MOVABLE_TYPE_SLOT);
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
-        
+
+        inkLevel = inkLevel - 200;
+
         ItemEnchantments itemEnchantments = typeBlock.get(DataComponents.STORED_ENCHANTMENTS);
         output.set(DataComponents.STORED_ENCHANTMENTS, itemEnchantments);
         

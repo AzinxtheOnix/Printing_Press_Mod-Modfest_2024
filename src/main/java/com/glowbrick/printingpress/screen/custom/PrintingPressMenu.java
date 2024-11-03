@@ -69,7 +69,6 @@ public class PrintingPressMenu extends AbstractContainerMenu {
         int pressPixelSize = 15;
         int scale = 40;
         int return_scale = (progress % scale) * pressPixelSize / scale;
-        System.out.printf("%d %d\n", progress, return_scale);
         return return_scale;
     }
 

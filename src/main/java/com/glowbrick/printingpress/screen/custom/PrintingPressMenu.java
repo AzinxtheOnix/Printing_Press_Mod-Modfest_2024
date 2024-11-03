@@ -37,14 +37,6 @@ public class PrintingPressMenu extends AbstractContainerMenu {
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
-        /**SlotItemHandler bookSlot = new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47);
-        bookSlot.mayPlace(new ItemStack(Items.BOOK));
-        SlotItemHandler typeBlockSlot = new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22);
-        typeBlockSlot.mayPlace(new ItemStack(ModItems.TYPE_BLOCK.get()));
-        SlotItemHandler inkSlot = new SlotItemHandler(this.blockEntity.itemHandler, 2, 8, 62);
-        inkSlot.mayPlace(new ItemStack(ModItems.MAGIC_INK_BOTTLE.get()));**/
-        //SlotItemHandler outputSlot = new SlotItemHandler(this.blockEntity.itemHandler, 3, 104, 34);
-        //outputSlot.mayPlace(new ItemStack(void));
 
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47));         // Book Slot
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22));    // Type Block Slot

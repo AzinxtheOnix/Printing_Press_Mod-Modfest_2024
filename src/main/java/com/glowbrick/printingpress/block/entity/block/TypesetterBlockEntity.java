@@ -39,6 +39,25 @@ public class TypesetterBlockEntity extends BlockEntity implements MenuProvider {
                 level.sendBlockUpdated(getBlockPos(),getBlockState(),getBlockState(),3);
             }
         }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            switch(slot) {
+                case 0:
+                    if(Items.ENCHANTED_BOOK != stack.getItem()) {
+                        return false;
+                    }
+                    break;
+                case 1:
+                    if(ModItems.MOVABLE_TYPE.get() != stack.getItem()) {
+                        return false;
+                    }
+                    break;
+                case 2:
+                    return false;
+            }
+            return true;
+        }
     };
 
     private static final int TYPE_ITEM_SLOT = 1;

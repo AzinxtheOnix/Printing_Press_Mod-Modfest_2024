@@ -9,6 +9,7 @@ import com.glowbrick.printingpress.screen.custom.PrintingPressMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -23,6 +24,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -185,16 +188,23 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private void craftItem() {
+        ItemStack typeBlock = this.itemHandler.getStackInSlot(MOVABLE_TYPE_SLOT);
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
+        
+        ItemEnchantments itemEnchantments = typeBlock.get(DataComponents.STORED_ENCHANTMENTS);
+        output.set(DataComponents.STORED_ENCHANTMENTS, itemEnchantments);
+        
+        itemHandler.setStackInSlot(OUTPUT_SLOT, output);
+
         itemHandler.extractItem(BLANK_TEMPLATE_SLOT, 1, false);
-        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                                    itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
     }
 
     private boolean hasRecipe() {
         ItemStack templateInput = new ItemStack(Items.BOOK);
         ItemStack movableTypeInput = new ItemStack(ModItems.TYPE_BLOCK.get());
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
+
+
         
         return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) &&
                 this.itemHandler.getStackInSlot(BLANK_TEMPLATE_SLOT).getItem() == templateInput.getItem() &&

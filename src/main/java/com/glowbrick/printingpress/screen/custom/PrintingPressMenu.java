@@ -2,6 +2,7 @@ package com.glowbrick.printingpress.screen.custom;
 
 import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.block.entity.block.PrintingPressBlockEntity;
+import com.glowbrick.printingpress.item.ModItems;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -13,6 +14,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
@@ -35,10 +37,18 @@ public class PrintingPressMenu extends AbstractContainerMenu {
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
+        /**SlotItemHandler bookSlot = new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47);
+        bookSlot.mayPlace(new ItemStack(Items.BOOK));
+        SlotItemHandler typeBlockSlot = new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22);
+        typeBlockSlot.mayPlace(new ItemStack(ModItems.TYPE_BLOCK.get()));
+        SlotItemHandler inkSlot = new SlotItemHandler(this.blockEntity.itemHandler, 2, 8, 62);
+        inkSlot.mayPlace(new ItemStack(ModItems.MAGIC_INK_BOTTLE.get()));**/
+        //SlotItemHandler outputSlot = new SlotItemHandler(this.blockEntity.itemHandler, 3, 104, 34);
+        //outputSlot.mayPlace(new ItemStack(void));
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47));      // Blank Template Slot
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22));     // Movable Type Slot
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 8, 62));      // Ink Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 54, 47));         // Book Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 1, 54, 22));    // Type Block Slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 2, 8, 62));          // Ink Slot
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 3, 104, 34));     // Output Slot
 
         addDataSlots(data);

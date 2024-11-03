@@ -3,7 +3,6 @@ package com.glowbrick.printingpress.screen;
 import com.glowbrick.printingpress.PrintingPress;
 import com.glowbrick.printingpress.screen.custom.PrintingPressMenu;
 import com.glowbrick.printingpress.screen.custom.TypesetterMenu;
-import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;

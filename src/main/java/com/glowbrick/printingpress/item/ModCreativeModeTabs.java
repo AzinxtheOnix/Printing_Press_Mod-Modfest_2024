@@ -5,7 +5,6 @@ import com.glowbrick.printingpress.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,13 +18,11 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> PRINTING_PRESS_TAB =
            CREATIVE_MODE_TAB.register("printing_press_tab", () -> CreativeModeTab.builder()
                    .title(Component.translatable("itemGroup.printingpress.printing_press_tab"))
-                   .icon(()-> new ItemStack(ModBlocks.PRINTINGPRESS.get()))                                 //may break
+                   .icon(()-> new ItemStack(ModBlocks.PRINTINGPRESS.get()))
                    .displayItems((pParameters, pOutput)->{
-                       pOutput.accept(ModItems.MOVABLE_TYPE.get());
                        pOutput.accept(ModBlocks.PRINTINGPRESS);
                        pOutput.accept(ModBlocks.TYPESETTER);
-                       pOutput.accept(ModItems.INK_BOTTLE);
-                       pOutput.accept(ModItems.MAGIC_INK_BOTTLE);
+                       pOutput.accept(ModItems.MOVABLE_TYPE.get());
                        pOutput.accept(ModItems.TYPE_BLOCK);
                        pOutput.accept(ModItems.INK_BOTTLE);
                        pOutput.accept(ModItems.MAGIC_INK_BOTTLE);

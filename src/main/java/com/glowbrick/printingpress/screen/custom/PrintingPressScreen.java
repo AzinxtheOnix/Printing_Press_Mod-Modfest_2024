@@ -4,14 +4,11 @@ import com.glowbrick.printingpress.PrintingPress;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMenu> {
     private static final ResourceLocation GUI_TEXTURE = 
@@ -31,12 +28,12 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
     @Override
     protected void init() {
         super.init();
-        
+        /*
         ImageButton dumpButton = new ImageButton(this.leftPos + 25, this.topPos + 48, 8, 10, new WidgetSprites(DUMP_BUTTON, DUMP_BUTTON), e -> {
             /**if (true) {
 				PacketDistributor.sendToServer(new TestGUIButtonMessage(0, x, y, z));
 				TestGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
-			}**/
+			}
 
 		}) {
 			@Override
@@ -46,7 +43,7 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
 		};
 
 		this.addRenderableWidget(dumpButton);
-
+        */
         this.inventoryLabelY = 10000;
         this.titleLabelY = 10000;
     }

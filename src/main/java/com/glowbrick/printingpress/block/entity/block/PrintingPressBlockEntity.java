@@ -156,6 +156,10 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
             inkLevel = maxInkLevel;
         }
 
+        if(inkLevel == 0) {
+            currentInkMode = 0;
+        }
+
         // Crafting Logic
         if(hasRecipe() && isOutputSlotEmptyOrReceivable()) {
             increaseCraftingProgress();

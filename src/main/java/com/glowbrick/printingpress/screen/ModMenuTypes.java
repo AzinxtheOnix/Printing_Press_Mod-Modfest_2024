@@ -1,6 +1,7 @@
 package com.glowbrick.printingpress.screen;
 
 import com.glowbrick.printingpress.PrintingPress;
+import com.glowbrick.printingpress.screen.custom.PrintingPressMenu;
 import com.glowbrick.printingpress.screen.custom.TypesetterMenu;
 import com.glowbrick.printingpress.screen.custom.TypesetterScreen;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,9 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<TypesetterMenu>> TYPESETTER_MENU =
             registerMenuType("typesetter_menu", TypesetterMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<PrintingPressMenu>> PRINTINGPRESS_MENU =
+            registerMenuType("printingpress_menu", PrintingPressMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String pName, IContainerFactory<T> factory) {
         return MENUS.register(pName, () -> IMenuTypeExtension.create(factory));

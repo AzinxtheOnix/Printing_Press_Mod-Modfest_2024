@@ -205,7 +205,6 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
 
     private void increaseCraftingProgress() {
         progress++;
-
     }
 
     private void craftItem() {
@@ -213,7 +212,7 @@ public class PrintingPressBlockEntity extends BlockEntity implements MenuProvide
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
 
         inkLevel = inkLevel - 200;
-
+      
         ItemEnchantments itemEnchantments = typeBlock.get(DataComponents.STORED_ENCHANTMENTS);
         output.set(DataComponents.STORED_ENCHANTMENTS, itemEnchantments);
         

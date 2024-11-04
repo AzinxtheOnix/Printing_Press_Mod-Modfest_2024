@@ -15,7 +15,7 @@ Items added include the following:<br>
 <ul>
 <li>Ink Bottle - crafted with 1 glass bottle and 1 black dye</li>
 <li>Magic Ink Bottle - crafted with 1 ink bottle and 1 bottle o' enchanting or 1 enchanted book </li>
-<li>Movable Type - crafted with <br>
+<li>Movable Type - crafted with 1 leather, 2 iron ingots, and 6 iron nuggets</li>
 <li>Type Block - crafted in a Typesetter with 1 enchanted book and 1 movable type</li>
 </ul>
 To duplicate an enchanted book:<br>

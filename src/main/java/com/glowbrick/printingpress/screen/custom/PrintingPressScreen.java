@@ -9,6 +9,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -34,7 +35,7 @@ public class PrintingPressScreen extends AbstractContainerScreen<PrintingPressMe
         
         ImageButton dumpButton = new ImageButton(this.leftPos + 25, this.topPos + 48, 8, 10, new WidgetSprites(DUMP_BUTTON, DUMP_BUTTON), e -> {
             /**if (true) {
-				PacketDistributor.sendToServer(new TestGUIButtonMessage(0, x, y, z));
+				PacketDistributor.sendToServer(new CustomPacketPayload());      // new TestGUIButtonMessage(0, x, y, z)
 				TestGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}**/
 

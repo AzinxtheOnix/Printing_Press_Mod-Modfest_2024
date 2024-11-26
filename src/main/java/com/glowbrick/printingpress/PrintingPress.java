@@ -4,6 +4,8 @@ import com.glowbrick.printingpress.block.ModBlocks;
 import com.glowbrick.printingpress.block.entity.ModBlockEntities;
 import com.glowbrick.printingpress.item.ModCreativeModeTabs;
 import com.glowbrick.printingpress.item.ModItems;
+import com.glowbrick.printingpress.payload.ClientPayloadHandler;
+import com.glowbrick.printingpress.payload.ServerPayloadHandler;
 import com.glowbrick.printingpress.payload.custom.DumpInkPayload;
 import com.glowbrick.printingpress.component.ModDataComponentTypes;
 import com.glowbrick.printingpress.screen.ModMenuTypes;
@@ -31,8 +33,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.handlers.ClientPayloadHandler;
-import net.neoforged.neoforge.network.handlers.ServerPayloadHandler;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -116,7 +116,7 @@ public class PrintingPress
             event.register(ModMenuTypes.PRINTINGPRESS_MENU.get(), PrintingPressScreen::new);
         }
 
-        /**@SubscribeEvent
+        @SubscribeEvent
         public static void register(final RegisterPayloadHandlersEvent event) {
             // Sets the current network version
             final PayloadRegistrar registrar = event.registrar("1");
@@ -128,6 +128,6 @@ public class PrintingPress
                     ServerPayloadHandler::handleDataOnMain
                 )
             );
-        }**/
+        }
     }
 }
